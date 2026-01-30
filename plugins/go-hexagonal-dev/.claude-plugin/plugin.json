@@ -62,7 +62,7 @@
   },
   "mcpServers": {
     "goarchtest-analyzer": {
-      "command": "${CLAUDE_PLUGIN_ROOT}/servers/goarchtest-server",
+      "command": "node ${CLAUDE_PLUGIN_ROOT}/servers/goarchtest-server.js",
       "args": ["--project-root", "${WORKSPACE_ROOT}"],
       "description": "MCP server for real-time architecture analysis"
     }
