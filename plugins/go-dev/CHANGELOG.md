@@ -69,6 +69,48 @@ All notable changes to the Go Hexagonal Architecture Development Plugin will be 
   - Aggregate design assistance
   - Ubiquitous language enforcement
 
+- **Domain Documentation Writer Agent**
+  - Standardized domain documentation generation
+  - Mermaid architecture diagrams
+  - Entity and use case documentation
+  - API endpoint listings
+  - Database schema documentation
+
+- **Test Coverage Guardian Agent**
+  - TDD/BDD practice enforcement
+  - Test coverage monitoring (90%+ domain, 85%+ application, 70%+ infrastructure)
+  - Godog feature validation
+  - Test quality review
+  - Red-Green-Refactor workflow guidance
+
+- **API Contract Validator Agent**
+  - REST/gRPC standards enforcement
+  - DTO validation and consistency
+  - Breaking change detection
+  - Error response standardization
+  - Pagination and versioning validation
+
+- **Security Reviewer Agent**
+  - Vulnerability detection (SQL injection, XSS, command injection)
+  - Authentication/authorization review
+  - Secrets management validation
+  - CORS and security headers
+  - Rate limiting and input validation
+
+- **Error Handling Consultant Agent**
+  - Error pattern consistency
+  - Error wrapping and context
+  - Domain error type design
+  - HTTP error mapping
+  - Structured logging guidance
+
+- **Database Migration Assistant Agent**
+  - Migration safety review
+  - Backward compatibility validation
+  - Safe index creation strategies
+  - Data loss prevention
+  - Transaction and rollback guidance
+
 #### Automation Features
 - **PostToolUse Hooks**
   - Domain purity validation on file edits

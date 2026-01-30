@@ -91,11 +91,6 @@ Create or update architecture tests using goarchtest.
 #### Architecture Reviewer Agent
 Proactively reviews code changes for architectural compliance.
 
-**Triggers:**
-- File changes in `internal/` directory
-- Pull request reviews
-- Architecture test failures
-
 **Reviews:**
 - Dependency direction
 - Layer purity
@@ -112,6 +107,65 @@ Expert guidance on Domain-Driven Design modeling.
 - Repository pattern
 - Domain events
 - Ubiquitous language
+
+#### Domain Documentation Writer Agent
+Automatically generates and maintains standardized domain documentation.
+
+**Creates:**
+- Architecture diagrams using Mermaid
+- Domain entity documentation
+- Use case descriptions
+- API endpoint listings
+- Database schema documentation
+
+#### Test Coverage Guardian Agent
+Enforces TDD/BDD practices and monitors test coverage.
+
+**Ensures:**
+- Tests written before implementation
+- Coverage targets (Domain 90%+, Application 85%+, Infrastructure 70%+)
+- Godog feature completeness
+- Test quality standards
+
+#### API Contract Validator Agent
+Maintains API consistency and prevents breaking changes.
+
+**Validates:**
+- REST/gRPC standards compliance
+- Request/response DTOs
+- Breaking change detection
+- Error response consistency
+- Pagination standards
+
+#### Security Reviewer Agent
+Identifies security vulnerabilities and enforces security best practices.
+
+**Checks:**
+- SQL injection, XSS, command injection
+- Authentication/authorization patterns
+- Password hashing and secrets management
+- CORS and security headers
+- Rate limiting and input validation
+
+#### Error Handling Consultant Agent
+Ensures consistent error handling patterns.
+
+**Reviews:**
+- Error creation and wrapping
+- Domain error types
+- HTTP error mapping
+- Logging practices
+- Error message quality
+
+#### Database Migration Assistant Agent
+Reviews migration scripts for safety and compatibility.
+
+**Validates:**
+- Backward compatibility
+- Safe index creation
+- Data loss prevention
+- Transaction usage
+- Rollback strategies
 
 ### 🔧 Automated Hooks
 
