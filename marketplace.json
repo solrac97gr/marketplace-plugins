@@ -1,0 +1,13 @@
+{
+  "name": "Solrac97gr Personal Marketplace",
+  "owner": {
+    "name": "solrac97gr"
+  },
+  "plugins": [
+    {
+      "name": "review-plugin",
+      "source": "./plugins/review-plugin",
+      "description": "Adds a /review skill for quick code reviews"
+    }
+  ]
+}
