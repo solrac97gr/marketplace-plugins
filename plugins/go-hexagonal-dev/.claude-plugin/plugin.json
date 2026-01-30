@@ -1,8 +1,5 @@
 {
   "name": "go-hexagonal-dev",
-  "source": {
-    "source": "local"
-  },
   "description": "Complete toolkit for Go backend development with hexagonal architecture, DDD, TDD/BDD, and automated architecture testing",
   "version": "1.0.0",
   "author": {
@@ -25,7 +22,6 @@
     "architecture-testing",
     "goarchtest"
   ],
-  "category": "development",
   "skills": [
     "./skills/start-project/",
     "./skills/new-feature/",
@@ -70,6 +66,5 @@
       "args": ["--project-root", "${WORKSPACE_ROOT}"],
       "description": "MCP server for real-time architecture analysis"
     }
-  },
-  "strict": false
+  }
 }
