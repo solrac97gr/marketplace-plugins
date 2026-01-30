@@ -63,9 +63,9 @@
   "mcpServers": {
     "goarchtest-analyzer": {
       "command": "go",
-      "args": ["run", "${CLAUDE_PLUGIN_ROOT}/servers/goarchtest-server.go", "${PWD}"],
+      "args": ["run", "goarchtest-server.go"],
       "description": "MCP server for real-time architecture analysis",
-      "cwd": "${CLAUDE_PLUGIN_ROOT}/servers"
+      "cwd": "${CLAUDE_PLUGIN_ROOT}/servers/goarchtest-server"
     }
   }
 }
