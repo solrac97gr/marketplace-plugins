@@ -32,14 +32,43 @@
   ],
   "agents": [
     "./agents/architecture-reviewer.md",
-    "./agents/ddd-consultant.md"
+    "./agents/ddd-consultant.md",
+    "./agents/domain-documenter.md"
   ],
   "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "CommitChanges|CreateCommit|git.*commit",
+        "hooks": [
+          {
+            "type": "agent",
+            "agent": "domain-documenter",
+            "description": "Update domain documentation before committing changes"
+          }
+        ]
+      }
+    ],
     "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "matchPath": "internal/.*\\.go$",
+        "hooks": [
+          {
+            "type": "agent",
+            "agent": "architecture-reviewer",
+            "description": "Review code for architecture compliance"
+          }
+        ]
+      },
       {
         "matcher": "Write|Edit",
         "matchPath": "internal/.*/domain/.*\\.go$",
         "hooks": [
+          {
+            "type": "agent",
+            "agent": "ddd-consultant",
+            "description": "Provide DDD guidance for domain layer changes"
+          },
           {
             "type": "command",
             "command": "${CLAUDE_PLUGIN_ROOT}/scripts/validate-domain-purity.sh",
