@@ -33,7 +33,12 @@
   "agents": [
     "./agents/architecture-reviewer.md",
     "./agents/ddd-consultant.md",
-    "./agents/domain-documenter.md"
+    "./agents/domain-documenter.md",
+    "./agents/test-coverage-guardian.md",
+    "./agents/api-contract-validator.md",
+    "./agents/security-reviewer.md",
+    "./agents/error-handling-consultant.md",
+    "./agents/database-migration-assistant.md"
   ],
   "hooks": {
     "PreToolUse": [
@@ -51,12 +56,44 @@
     "PostToolUse": [
       {
         "matcher": "Write|Edit",
+        "matchPath": ".*_test\\.go$",
+        "hooks": [
+          {
+            "type": "agent",
+            "agent": "test-coverage-guardian",
+            "description": "Review test coverage and quality"
+          }
+        ]
+      },
+      {
+        "matcher": "Write|Edit",
+        "matchPath": "internal/.*/infrastructure/http/.*\\.go$",
+        "hooks": [
+          {
+            "type": "agent",
+            "agent": "api-contract-validator",
+            "description": "Validate API contracts and consistency"
+          }
+        ]
+      },
+      {
+        "matcher": "Write|Edit",
         "matchPath": "internal/.*\\.go$",
         "hooks": [
           {
             "type": "agent",
             "agent": "architecture-reviewer",
             "description": "Review code for architecture compliance"
+          },
+          {
+            "type": "agent",
+            "agent": "security-reviewer",
+            "description": "Check for security vulnerabilities"
+          },
+          {
+            "type": "agent",
+            "agent": "error-handling-consultant",
+            "description": "Review error handling patterns"
           }
         ]
       },
@@ -73,6 +110,17 @@
             "type": "command",
             "command": "${CLAUDE_PLUGIN_ROOT}/scripts/validate-domain-purity.sh",
             "description": "Validate domain layer has no external dependencies"
+          }
+        ]
+      },
+      {
+        "matcher": "Write|Edit",
+        "matchPath": "migrations/.*\\.sql$",
+        "hooks": [
+          {
+            "type": "agent",
+            "agent": "database-migration-assistant",
+            "description": "Review database migration safety"
           }
         ]
       },
