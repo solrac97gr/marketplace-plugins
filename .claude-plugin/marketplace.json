@@ -5,11 +5,6 @@
   },
   "plugins": [
     {
-      "name": "review-plugin",
-      "source": "./plugins/review-plugin",
-      "description": "Adds a /review skill for quick code reviews"
-    },
-    {
       "name": "go-hexagonal-dev",
       "source": "./plugins/go-hexagonal-dev",
       "description": "Go backend development with hexagonal architecture, DDD, and TDD/BDD using Godog"
