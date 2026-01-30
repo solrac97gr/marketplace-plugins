@@ -20,7 +20,7 @@ Create a complete feature following TDD/BDD principles, starting with the Godog 
    - What should happen on failure (error cases)?
    - Are there any dependencies on other entities/aggregates?
 
-2. **Create the Godog feature file** in `test/features/[domain]/[feature_name].feature`:
+2. **Create the Godog feature file** in `features/[domain]/[feature_name].feature`:
    - Use proper Gherkin syntax (Feature, Scenario, Given, When, Then)
    - Include multiple scenarios: happy path + edge cases
    - Make it human-readable (non-technical people should understand it)
@@ -80,7 +80,7 @@ Create a complete feature following TDD/BDD principles, starting with the Godog 
 
 ## Phase 5: BDD Tests (Godog Step Definitions)
 
-12. **Create step definitions** in `test/features/[domain]/[feature_name]_test.go`:
+12. **Create step definitions** in `features/[domain]/[feature_name]_test.go`:
     - Implement Given/When/Then steps
     - Use real implementations (integration-style)
     - Setup test database/dependencies

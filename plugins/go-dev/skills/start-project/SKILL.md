@@ -176,7 +176,7 @@ project-name/
    - `github.com/joho/godotenv` for environment variables
    - `github.com/google/uuid` for ID generation
 
-10. Create example feature file in `test/features/[example-domain]/example.feature` showing Godog syntax for the domain with example implementation
+10. Create example feature file in `features/[example-domain]/example.feature` showing Godog syntax for the domain with example implementation
 
 11. Create initial test setup files for unit, integration, and BDD tests organized by domain
 
