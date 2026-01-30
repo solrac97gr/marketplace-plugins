@@ -32,7 +32,8 @@ To use these plugins with Claude Code:
 
 ```
 marketplace-plugins/
-├── marketplace.json          # Marketplace manifest
+├── .claude-plugin/
+│   └── marketplace.json      # Marketplace manifest
 ├── plugins/
 │   └── [plugin-name]/
 │       ├── .claude-plugin/
@@ -70,7 +71,7 @@ marketplace-plugins/
    Instructions for Claude when this skill is invoked.
    ```
 
-4. Register the plugin in root `marketplace.json`:
+4. Register the plugin in `.claude-plugin/marketplace.json`:
    ```json
    {
      "plugins": [
