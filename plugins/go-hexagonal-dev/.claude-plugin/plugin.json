@@ -23,12 +23,12 @@
     "goarchtest"
   ],
   "skills": [
-    "./skills/start-project/",
-    "./skills/new-feature/",
-    "./skills/new-entity/",
-    "./skills/new-usecase/",
-    "./skills/review-arch/",
-    "./skills/update-arch-tests/"
+    "./skills/start-project",
+    "./skills/new-feature",
+    "./skills/new-entity",
+    "./skills/new-usecase",
+    "./skills/review-arch",
+    "./skills/update-arch-tests"
   ],
   "agents": [
     "./agents/architecture-reviewer.md",
@@ -62,9 +62,10 @@
   },
   "mcpServers": {
     "goarchtest-analyzer": {
-      "command": " ./${CLAUDE_PLUGIN_ROOT}/servers/goarchtest-server/goarchtest-server",
-      "args": ["--project-root", "${WORKSPACE_ROOT}"],
-      "description": "MCP server for real-time architecture analysis"
+      "command": "go",
+      "args": ["run", "${CLAUDE_PLUGIN_ROOT}/servers/goarchtest-server.go", "${PWD}"],
+      "description": "MCP server for real-time architecture analysis",
+      "cwd": "${CLAUDE_PLUGIN_ROOT}/servers"
     }
   }
 }
