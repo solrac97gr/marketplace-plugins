@@ -1,5 +1,5 @@
 {
-  "name": "go-hexagonal-dev",
+  "name": "go-dev",
   "description": "Complete toolkit for Go backend development with hexagonal architecture, DDD, TDD/BDD, and automated architecture testing",
   "version": "1.0.0",
   "author": {

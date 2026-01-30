@@ -5,7 +5,7 @@ This document describes the internal architecture of the plugin itself and how a
 ## Plugin Structure
 
 ```
-go-hexagonal-dev/
+go-dev/
 ├── .claude-plugin/
 │   └── plugin.json              # Plugin manifest with metadata, hooks, MCP servers
 ├── skills/                      # User-invocable skills

@@ -5,8 +5,8 @@
   },
   "plugins": [
     {
-      "name": "go-hexagonal-dev",
-      "source": "./plugins/go-hexagonal-dev",
+      "name": "go-dev",
+      "source": "./plugins/go-dev",
       "description": "Go backend development with hexagonal architecture, DDD, and TDD/BDD using Godog"
     }
   ]

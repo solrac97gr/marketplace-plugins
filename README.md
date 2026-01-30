@@ -8,7 +8,7 @@ This repository contains custom plugins that extend Claude Code's functionality 
 
 ## Available Plugins
 
-### go-hexagonal-dev
+### go-dev
 
 Complete toolkit for Go backend development following hexagonal architecture, DDD, and TDD/BDD with Godog. Features automated architecture testing, intelligent agents, and real-time validation hooks.
 

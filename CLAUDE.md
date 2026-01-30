@@ -57,9 +57,9 @@ disable-model-invocation: true  # Optional flag
 2. Add a `SKILL.md` file with frontmatter and instructions
 3. Skills are automatically discovered from the plugin directory structure
 
-## go-hexagonal-dev Plugin Architecture
+## go-dev Plugin Architecture
 
-The `go-hexagonal-dev` plugin creates Go projects following a specific microservices architecture with automated architecture testing.
+The `go-dev` plugin creates Go projects following a specific microservices architecture with automated architecture testing.
 
 ### Structure Pattern
 ```
@@ -141,6 +141,6 @@ The plugin includes two specialized agents:
 
 To use MCP server tools, install dependencies:
 ```bash
-cd plugins/go-hexagonal-dev/servers
+cd plugins/go-dev/servers
 npm install
 ```

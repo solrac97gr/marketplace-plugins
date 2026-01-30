@@ -1,4 +1,4 @@
-module github.com/solrac97gr/marketplace-plugins/plugins/go-hexagonal-dev/servers
+module github.com/solrac97gr/marketplace-plugins/plugins/go-dev/servers
 
 go 1.25.6
 
