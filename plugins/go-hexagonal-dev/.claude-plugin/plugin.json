@@ -1,0 +1,75 @@
+{
+  "name": "go-hexagonal-dev",
+  "source": {
+    "source": "local"
+  },
+  "description": "Complete toolkit for Go backend development with hexagonal architecture, DDD, TDD/BDD, and automated architecture testing",
+  "version": "1.0.0",
+  "author": {
+    "name": "solrac97gr",
+    "email": "solrac97gr@users.noreply.github.com"
+  },
+  "homepage": "https://github.com/solrac97gr/marketplace-plugins",
+  "repository": "https://github.com/solrac97gr/marketplace-plugins",
+  "license": "MIT",
+  "keywords": [
+    "golang",
+    "hexagonal-architecture",
+    "clean-architecture",
+    "ddd",
+    "domain-driven-design",
+    "tdd",
+    "bdd",
+    "godog",
+    "microservices",
+    "architecture-testing",
+    "goarchtest"
+  ],
+  "category": "development",
+  "skills": [
+    "./skills/start-project/",
+    "./skills/new-feature/",
+    "./skills/new-entity/",
+    "./skills/new-usecase/",
+    "./skills/review-arch/",
+    "./skills/update-arch-tests/"
+  ],
+  "agents": [
+    "./agents/architecture-reviewer.md",
+    "./agents/ddd-consultant.md"
+  ],
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "matchPath": "internal/.*/domain/.*\\.go$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/validate-domain-purity.sh",
+            "description": "Validate domain layer has no external dependencies"
+          }
+        ]
+      },
+      {
+        "matcher": "Write|Edit",
+        "matchPath": "test/architecture/.*_test\\.go$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "go test ./test/architecture/... -v",
+            "description": "Run architecture tests after updating them"
+          }
+        ]
+      }
+    ]
+  },
+  "mcpServers": {
+    "goarchtest-analyzer": {
+      "command": "${CLAUDE_PLUGIN_ROOT}/servers/goarchtest-server",
+      "args": ["--project-root", "${WORKSPACE_ROOT}"],
+      "description": "MCP server for real-time architecture analysis"
+    }
+  },
+  "strict": false
+}

@@ -56,3 +56,91 @@ disable-model-invocation: true  # Optional flag
 1. Create a new directory under `plugins/[plugin-name]/skills/[skill-name]/`
 2. Add a `SKILL.md` file with frontmatter and instructions
 3. Skills are automatically discovered from the plugin directory structure
+
+## go-hexagonal-dev Plugin Architecture
+
+The `go-hexagonal-dev` plugin creates Go projects following a specific microservices architecture with automated architecture testing.
+
+### Structure Pattern
+```
+project-name/
+├── cmd/
+│   ├── main.go                     # Cobra CLI entry point
+│   ├── root.go                     # Root command
+│   └── serve/
+│       ├── [domain].go             # Each domain microservice command
+│       └── all.go                  # Run all microservices
+├── api/proto/[domain]/             # gRPC definitions (if using gRPC)
+├── internal/
+│   ├── [domain]/                   # Each bounded context (user, order, etc.)
+│   │   ├── domain/                 # Pure domain logic
+│   │   ├── application/            # Use cases and DTOs
+│   │   └── infrastructure/         # Adapters (DB, HTTP, gRPC)
+│   └── shared/                     # Cross-domain shared code
+└── test/
+    ├── architecture/               # goarchtest tests
+    ├── features/[domain]/          # Godog BDD tests per domain
+    ├── integration/[domain]/
+    └── unit/[domain]/
+```
+
+### Key Principles
+- **Microservices Monorepo**: Single binary with Cobra commands for each microservice
+- **Domain-First**: Organized by bounded context (`internal/[domain]/`)
+- **Hexagonal Architecture**: Each domain has domain/application/infrastructure layers
+- **Dependency Flow**: Infrastructure → Application → Domain (always inward)
+- **Automated Architecture Testing**: Uses goarchtest (https://github.com/solrac97gr/goarchtest) to enforce constraints
+- **TDD/BDD**: Features start with Godog feature files, then tests, then implementation
+- **Protocol Agnostic**: Supports REST API, gRPC, or both
+- **Independent Deployment**: Each domain can run as separate microservice from same binary
+
+### Architecture Testing
+The plugin integrates goarchtest to automatically validate:
+- Layer dependencies (domain cannot depend on application/infrastructure)
+- Domain isolation (domains cannot depend on each other directly)
+- Naming conventions (repositories, use cases, handlers)
+- Port & Adapter pattern enforcement
+
+Tests run with `make test-arch` and are part of `/review-arch` workflow.
+
+### Intelligent Agents
+
+The plugin includes two specialized agents:
+
+**Architecture Reviewer Agent** (`agents/architecture-reviewer.md`):
+- Proactively reviews code changes for architectural violations
+- Validates dependency direction and layer purity
+- Checks DDD pattern usage
+- Provides educational feedback
+
+**DDD Consultant Agent** (`agents/ddd-consultant.md`):
+- Strategic DDD guidance (bounded contexts, context mapping)
+- Tactical pattern recommendations
+- Entity vs Value Object decisions
+- Aggregate design assistance
+
+### Automated Hooks
+
+**PostToolUse Hooks:**
+1. **Domain Purity Validation** - Triggers on Write/Edit of `internal/*/domain/*.go`
+   - Runs `scripts/validate-domain-purity.sh`
+   - Validates only stdlib and shared imports
+   - Prevents infrastructure dependencies
+
+2. **Architecture Test Execution** - Triggers on Write/Edit of `test/architecture/*_test.go`
+   - Runs `go test ./test/architecture/... -v`
+   - Immediate feedback on architectural violations
+
+### MCP Server
+
+**GoArchTest Analyzer** (`servers/goarchtest-server`):
+- Real-time architecture analysis via MCP protocol
+- Tools: check_layer_dependencies, check_domain_isolation, check_naming_conventions
+- Runs architecture tests on-demand
+- Generates dependency graphs
+
+To use MCP server tools, install dependencies:
+```bash
+cd plugins/go-hexagonal-dev/servers
+npm install
+```
