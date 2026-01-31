@@ -27,6 +27,7 @@
     "./skills/new-feature",
     "./skills/new-entity",
     "./skills/new-usecase",
+    "./skills/from-diagram",
     "./skills/review-arch",
     "./skills/update-arch-tests"
   ],

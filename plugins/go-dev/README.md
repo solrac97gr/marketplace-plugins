@@ -61,6 +61,29 @@ Create an application use case.
 - Input/Output DTOs
 - Unit tests with mocks
 
+#### `/from-diagram`
+Generate complete feature implementation from visual diagrams.
+
+**Supports:**
+- Mermaid (flowchart, sequence, class, state diagrams)
+- PlantUML
+- GraphViz DOT
+- Text descriptions of architecture/flow
+
+**Process:**
+1. Analyzes diagram to extract entities, operations, and flows
+2. Generates Godog feature file from diagram flows
+3. Creates domain layer from diagram entities
+4. Implements application layer from diagram operations
+5. Adds infrastructure based on diagram dependencies
+6. Generates complete test suite (unit + BDD)
+
+**Example Use Cases:**
+- Turn sequence diagram into working API
+- Convert flowchart into use case implementation
+- Transform class diagram into domain model
+- Generate state machine from state diagram
+
 #### `/review-arch`
 Comprehensive architecture review combining automated tests and AI analysis.
 

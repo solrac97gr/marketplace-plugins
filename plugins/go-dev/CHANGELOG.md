@@ -39,6 +39,16 @@ All notable changes to the Go Hexagonal Architecture Development Plugin will be 
   - Unit tests with mocks
   - TDD approach
 
+- **`/from-diagram`** - Diagram-to-code generation
+  - Converts visual diagrams into working Go code
+  - Supports Mermaid (flowchart, sequence, class, state)
+  - Supports PlantUML, GraphViz DOT
+  - Extracts entities, operations, and flows from diagrams
+  - Generates complete feature (domain + application + infrastructure)
+  - Creates BDD feature files from diagram flows
+  - Follows TDD/BDD principles
+  - Maintains hexagonal architecture patterns
+
 - **`/review-arch`** - Architectural compliance review
   - Automated architecture testing with goarchtest
   - AI-powered code analysis
