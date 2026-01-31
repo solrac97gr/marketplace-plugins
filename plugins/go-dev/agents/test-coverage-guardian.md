@@ -32,6 +32,8 @@ Ensure every piece of code is properly tested following TDD/BDD principles, main
 - Ensure feature files are clear and business-readable
 - Check that step definitions exist for all scenarios
 - Verify feature files are in sync with implementation
+- Step definitions use `context.Context` for state management (thread-safe)
+- Tests use `godog.TestSuite` with `TestingT` for go test integration
 
 **Feature File Quality:**
 ```gherkin
@@ -176,7 +178,7 @@ internal/
 features/
 └── user/
     ├── registration.feature       # BDD feature files
-    └── registration_test.go       # Godog step definitions
+    └── registration_test.go       # Godog step definitions (with TestSuite)
 ```
 
 ### 7. Test Anti-Patterns to Flag
@@ -283,7 +285,14 @@ go test ./internal/*/infrastructure/... -cover
 
 **Run BDD tests:**
 ```bash
-go test ./features/... -v -godog.format=pretty
+# Using go test (recommended)
+go test -v ./features/...
+
+# Run specific scenario
+go test -v ./features/... -test.run ^TestFeatures$/^Scenario_Name$
+
+# With custom format flags (if using TestMain with BindCommandLineFlags)
+go test -v ./features/... --godog.format=pretty --godog.random
 ```
 
 ## Integration with TDD Workflow

@@ -81,12 +81,62 @@ Create a complete feature following TDD/BDD principles, starting with the Godog 
 ## Phase 5: BDD Tests (Godog Step Definitions)
 
 12. **Create step definitions** in `features/[domain]/[feature_name]_test.go`:
-    - Implement Given/When/Then steps
+    - Use `context.Context` to pass state between steps (thread-safe for concurrent scenarios)
+    - Implement InitializeScenario function with `*godog.ScenarioContext`
+    - Implement Given/When/Then steps with context.Context parameters
     - Use real implementations (integration-style)
-    - Setup test database/dependencies
+    - Setup test database/dependencies in scenario initialization
     - Run full flow end-to-end
+    - Structure:
+      ```go
+      package feature_test
 
-13. **Run BDD tests** - they should PASS now (Green phase)
+      import (
+          "context"
+          "testing"
+          "github.com/cucumber/godog"
+      )
+
+      // State keys for context
+      type ctxKey struct{}
+
+      var responseKey = ctxKey{}
+
+      func TestFeatures(t *testing.T) {
+          suite := godog.TestSuite{
+              ScenarioInitializer: InitializeScenario,
+              Options: &godog.Options{
+                  Format:   "pretty",
+                  Paths:    []string{"features"},
+                  TestingT: t, // Run as go test subtests
+              },
+          }
+
+          if suite.Run() != 0 {
+              t.Fatal("non-zero status returned, failed to run feature tests")
+          }
+      }
+
+      func InitializeScenario(sc *godog.ScenarioContext) {
+          sc.Step(`^step pattern$`, stepFunction)
+          // Add more steps...
+      }
+
+      func stepFunction(ctx context.Context) (context.Context, error) {
+          // Step implementation
+          // Store state: ctx = context.WithValue(ctx, responseKey, value)
+          // Retrieve state: value := ctx.Value(responseKey)
+          return ctx, nil
+      }
+      ```
+
+13. **Run BDD tests** - they should PASS now (Green phase):
+    ```bash
+    # Run as go test
+    go test -v ./features/...
+    # Or run specific scenario
+    go test -v ./features/... -test.run ^TestFeatures$/^scenario_name$
+    ```
 
 ## Phase 6: Integration Tests
 

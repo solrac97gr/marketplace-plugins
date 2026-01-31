@@ -14,17 +14,18 @@ All notable changes to the Go Hexagonal Architecture Development Plugin will be 
   - Multiple database support (PostgreSQL, MongoDB, MySQL, SQLite)
   - Cobra CLI with microservice commands
   - Automated architecture test generation
-  - Godog BDD setup
+  - Godog BDD setup following v0.12.0+ best practices
   - Complete Makefile with all commands
   - Docker Compose configuration
 
 - **`/new-feature`** - Complete feature scaffolding with TDD/BDD
   - Starts with Godog feature file creation
+  - Uses modern Godog patterns (context.Context, TestSuite)
   - Interactive clarification questions
   - Domain entity generation
   - Use case creation
   - Infrastructure adapters (HTTP/gRPC)
-  - Comprehensive test suite
+  - Comprehensive test suite with proper step definitions
 
 - **`/new-entity`** - DDD entity creation
   - Domain entities with business logic
@@ -79,9 +80,11 @@ All notable changes to the Go Hexagonal Architecture Development Plugin will be 
 - **Test Coverage Guardian Agent**
   - TDD/BDD practice enforcement
   - Test coverage monitoring (90%+ domain, 85%+ application, 70%+ infrastructure)
-  - Godog feature validation
+  - Godog feature validation with modern patterns (context.Context, TestSuite)
+  - Step definition best practices enforcement
   - Test quality review
   - Red-Green-Refactor workflow guidance
+  - go test integration validation
 
 - **API Contract Validator Agent**
   - REST/gRPC standards enforcement
@@ -136,6 +139,12 @@ All notable changes to the Go Hexagonal Architecture Development Plugin will be 
 - Architecture principles guide
 - DDD tactical patterns reference
 - Agent role descriptions
+- **GODOG_BEST_PRACTICES.md** - Detailed Godog implementation guide
+  - Modern patterns (v0.12.0+: context.Context, TestSuite, go test)
+  - Step definition best practices
+  - Concurrency and thread-safety
+  - Feature file quality standards
+  - Common pitfalls and anti-patterns
 
 ### Architecture Principles
 
