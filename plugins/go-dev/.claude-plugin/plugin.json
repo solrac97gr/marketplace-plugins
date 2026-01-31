@@ -38,7 +38,8 @@
     "./agents/api-contract-validator.md",
     "./agents/security-reviewer.md",
     "./agents/error-handling-consultant.md",
-    "./agents/database-migration-assistant.md"
+    "./agents/database-migration-assistant.md",
+    "./agents/code-quality-reviewer.md"
   ],
   "hooks": {
     "PreToolUse": [
@@ -94,6 +95,11 @@
             "type": "agent",
             "agent": "error-handling-consultant",
             "description": "Review error handling patterns"
+          },
+          {
+            "type": "agent",
+            "agent": "code-quality-reviewer",
+            "description": "Review code quality and Uber Go Style Guide compliance"
           }
         ]
       },

@@ -114,6 +114,16 @@ All notable changes to the Go Hexagonal Architecture Development Plugin will be 
   - Data loss prevention
   - Transaction and rollback guidance
 
+- **Code Quality Reviewer Agent**
+  - **Dynamic best practices**: Fetches latest Uber Go Style Guide from source
+  - Interface usage validation (no pointers to interfaces)
+  - Concurrency safety (mutexes, atomics)
+  - Error handling idioms (wrapping, naming)
+  - Initialization patterns (make, &T{}, var)
+  - Performance optimizations (strconv, capacity hints)
+  - Code style compliance (imports, nesting, scope)
+  - Always up-to-date with language evolution
+
 #### Automation Features
 - **PostToolUse Hooks**
   - Domain purity validation on file edits
@@ -145,6 +155,17 @@ All notable changes to the Go Hexagonal Architecture Development Plugin will be 
   - Concurrency and thread-safety
   - Feature file quality standards
   - Common pitfalls and anti-patterns
+- **CODE_GENERATION_RULES.md** - Quick reference guide for code generation
+  - Essential checklists for all generated code
+  - Common patterns with examples (constructors, errors, tests)
+  - Anti-patterns to avoid
+  - **Instructs to fetch latest Uber Go Style Guide dynamically**
+  - Prevents stale documentation, reduces context overhead
+- **DYNAMIC_BEST_PRACTICES.md** - Explains the dynamic fetching approach
+  - Why dynamic vs static documentation
+  - How agents and skills fetch latest best practices
+  - Token savings (~85% reduction)
+  - Implementation details and workflow
 
 ### Architecture Principles
 

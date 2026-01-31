@@ -4,6 +4,13 @@ description: Scaffold new feature following TDD/BDD with Godog
 
 Create a complete feature following TDD/BDD principles, starting with the Godog feature file.
 
+**IMPORTANT - Code Quality:**
+Before generating code, fetch the latest Uber Go Style Guide:
+```
+fetch_webpage("https://github.com/uber-go/guide/blob/master/style.md", "latest Go best practices")
+```
+This ensures all generated code follows current production standards.
+
 **Workflow (CRITICAL - Follow this order):**
 
 ## Phase 1: Feature Discovery & BDD Feature File

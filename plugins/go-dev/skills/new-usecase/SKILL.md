@@ -4,6 +4,13 @@ description: Create application use case with tests
 
 Create a new use case in the application layer following TDD principles.
 
+**IMPORTANT - Code Quality:**
+Before generating code, fetch the latest Uber Go Style Guide:
+```
+fetch_webpage("https://github.com/uber-go/guide/blob/master/style.md", "latest Go best practices")
+```
+This ensures all generated code follows current production standards.
+
 **What to Create:**
 
 1. **Ask the user:**

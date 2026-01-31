@@ -167,6 +167,22 @@ Reviews migration scripts for safety and compatibility.
 - Transaction usage
 - Rollback strategies
 
+#### Code Quality Reviewer Agent
+Enforces Uber Go Style Guide best practices on all Go code.
+
+**Dynamic Approach:**
+- Fetches latest guide from https://github.com/uber-go/guide/blob/master/style.md
+- Always up-to-date with language evolution
+- No stale documentation
+
+**Reviews:**
+- Interface usage patterns
+- Concurrency safety (mutexes, atomics)
+- Error handling idioms
+- Initialization patterns
+- Performance optimizations
+- Code style and idioms
+
 ### 🔧 Automated Hooks
 
 #### Domain Purity Validation

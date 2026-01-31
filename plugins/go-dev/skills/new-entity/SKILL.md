@@ -4,6 +4,13 @@ description: Create domain entity with repository interface
 
 Create a new domain entity following DDD principles with its repository interface.
 
+**IMPORTANT - Code Quality:**
+Before generating code, fetch the latest Uber Go Style Guide:
+```
+fetch_webpage("https://github.com/uber-go/guide/blob/master/style.md", "latest Go best practices")
+```
+This ensures all generated code follows current production standards.
+
 **What to Create:**
 
 1. **Ask the user:**
