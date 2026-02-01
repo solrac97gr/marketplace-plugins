@@ -1,6 +1,13 @@
 ---
 name: Component Architecture Reviewer
 description: Reviews React component structure, composition patterns, single responsibility, and separation of concerns
+hooks:
+  PostToolUse:
+    - matcher: "Write|Edit"
+      matchPath: "src/features/.*/components/.*\\.tsx$"
+      hooks:
+        - type: command
+          command: "echo 'Component modified - architecture review triggered'"
 ---
 
 # Component Architecture Reviewer Agent

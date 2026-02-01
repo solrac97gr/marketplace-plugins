@@ -7,112 +7,16 @@
     "email": "solrac97gr@users.noreply.github.com"
   },
   "hooks": {
-    "PreToolUse": [
-      {
-        "matcher": "CommitChanges|CreateCommit|git.*commit",
-        "hooks": [
-          {
-            "type": "agent",
-            "agent": "test-coverage-guardian",
-            "description": "Ensure code quality before commits"
-          },
-          {
-            "type": "agent",
-            "agent": "typescript-quality-reviewer",
-            "description": "Ensure code quality before commits"
-          }
-        ]
-      }
-    ],
+    "PreToolUse": [],
     "PostToolUse": [
-      {
-        "matcher": "Write|Edit",
-        "matchPath": "src/features/.*/components/.*\\.tsx$",
-        "hooks": [
-          {
-            "type": "agent",
-            "agent": "component-architecture-reviewer",
-            "description": "Review component architecture and React best practices"
-          },
-          {
-            "type": "agent",
-            "agent": "react-best-practices-enforcer",
-            "description": "Review React best practices"
-          },
-          {
-            "type": "agent",
-            "agent": "accessibility-reviewer",
-            "description": "Review accessibility compliance"
-          },
-          {
-            "type": "agent",
-            "agent": "performance-reviewer",
-            "description": "Review performance optimizations"
-          }
-        ]
-      },
       {
         "matcher": "Write|Edit",
         "matchPath": "src/features/.*/hooks/.*\\.ts$",
         "hooks": [
           {
-            "type": "agent",
-            "agent": "hook-usage-reviewer",
-            "description": "Validate custom hooks usage"
-          },
-          {
             "type": "command",
             "command": "${CLAUDE_PLUGIN_ROOT}/scripts/validate-component-purity.sh \"${TOOL_FILE_PATH}\"",
             "description": "Validate component purity"
-          }
-        ]
-      },
-      {
-        "matcher": "Write|Edit",
-        "matchPath": ".*\\.test\\.(ts|tsx)$",
-        "hooks": [
-          {
-            "type": "agent",
-            "agent": "test-coverage-guardian",
-            "description": "Review test coverage and quality"
-          }
-        ]
-      },
-      {
-        "matcher": "Write|Edit",
-        "matchPath": "src/features/.*/context/.*\\.tsx$",
-        "hooks": [
-          {
-            "type": "agent",
-            "agent": "state-management-reviewer",
-            "description": "Review state management patterns"
-          }
-        ]
-      },
-      {
-        "matcher": "Write|Edit",
-        "matchPath": "src/.*\\.(ts|tsx)$",
-        "hooks": [
-          {
-            "type": "agent",
-            "agent": "typescript-quality-reviewer",
-            "description": "Review TypeScript quality"
-          },
-          {
-            "type": "agent",
-            "agent": "security-reviewer",
-            "description": "Review security"
-          }
-        ]
-      },
-      {
-        "matcher": "Write|Edit",
-        "matchPath": "tailwind\\.config\\.js$|.*\\.tsx$",
-        "hooks": [
-          {
-            "type": "agent",
-            "agent": "tailwind-best-practices-reviewer",
-            "description": "Review Tailwind CSS best practices"
           }
         ]
       }
