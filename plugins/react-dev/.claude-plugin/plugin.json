@@ -2,16 +2,16 @@
   "name": "react-dev",
   "description": "Comprehensive React development plugin with TypeScript, Vite, Tailwind CSS, and modern testing tools. Provides TDD workflows, accessibility compliance, performance optimization, and intelligent code review agents.",
   "version": "1.0.0",
-  "author": "solrac97gr",
+  "author": {
+    "name": "solrac97gr",
+    "email": "solrac97gr@users.noreply.github.com"
+  },
   "hooks": {
     "preToolUse": [
       {
         "description": "Ensure code quality before commits",
         "matcher": "CommitChanges|CreateCommit|git.*commit",
-        "agents": [
-          "test-coverage-guardian",
-          "typescript-quality-reviewer"
-        ]
+        "agents": ["test-coverage-guardian", "typescript-quality-reviewer"]
       }
     ],
     "postToolUse": [
@@ -30,43 +30,32 @@
         "description": "Validate custom hooks usage",
         "matcher": "Write|Edit",
         "filePattern": "src/features/.*/hooks/.*\\.ts$",
-        "agents": [
-          "hook-usage-reviewer"
-        ],
+        "agents": ["hook-usage-reviewer"],
         "command": "${CLAUDE_PLUGIN_ROOT}/scripts/validate-component-purity.sh \"${TOOL_FILE_PATH}\""
       },
       {
         "description": "Review test coverage and quality",
         "matcher": "Write|Edit",
         "filePattern": ".*\\.test\\.(ts|tsx)$",
-        "agents": [
-          "test-coverage-guardian"
-        ]
+        "agents": ["test-coverage-guardian"]
       },
       {
         "description": "Review state management patterns",
         "matcher": "Write|Edit",
         "filePattern": "src/features/.*/context/.*\\.tsx$",
-        "agents": [
-          "state-management-reviewer"
-        ]
+        "agents": ["state-management-reviewer"]
       },
       {
         "description": "Review TypeScript quality and security",
         "matcher": "Write|Edit",
         "filePattern": "src/.*\\.(ts|tsx)$",
-        "agents": [
-          "typescript-quality-reviewer",
-          "security-reviewer"
-        ]
+        "agents": ["typescript-quality-reviewer", "security-reviewer"]
       },
       {
         "description": "Review Tailwind CSS best practices",
         "matcher": "Write|Edit",
         "filePattern": "tailwind\\.config\\.js$|.*\\.tsx$",
-        "agents": [
-          "tailwind-best-practices-reviewer"
-        ]
+        "agents": ["tailwind-best-practices-reviewer"]
       }
     ]
   },
