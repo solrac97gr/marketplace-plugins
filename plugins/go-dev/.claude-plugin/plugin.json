@@ -43,87 +43,12 @@
     "./agents/code-quality-reviewer.md"
   ],
   "hooks": {
-    "PreToolUse": [
-      {
-        "matcher": "CommitChanges|CreateCommit|git.*commit",
-        "hooks": [
-          {
-            "type": "agent",
-            "prompt": "Update domain documentation before committing changes. Context: $ARGUMENTS",
-            "description": "Update domain documentation before committing changes"
-          }
-        ]
-      }
-    ],
+    "PreToolUse": [],
     "PostToolUse": [
-      {
-        "matcher": "Write|Edit",
-        "matchPath": ".*_test\\.go$",
-        "hooks": [
-          {
-            "type": "agent",
-            "prompt": "Review test coverage and quality. Context: $ARGUMENTS",
-            "description": "Review test coverage and quality"
-          }
-        ]
-      },
-      {
-        "matcher": "Write|Edit",
-        "matchPath": "internal/.*/infrastructure/http/.*\\.go$",
-        "hooks": [
-          {
-            "type": "agent",
-            "prompt": "Validate API contracts and consistency. Context: $ARGUMENTS",
-            "description": "Validate API contracts and consistency"
-          }
-        ]
-      },
-      {
-        "matcher": "Write|Edit",
-        "matchPath": "migrations/.*\\.sql$",
-        "hooks": [
-          {
-            "type": "agent",
-            "prompt": "Review database migration safety. Context: $ARGUMENTS",
-            "description": "Review database migration safety"
-          }
-        ]
-      },
-      {
-        "matcher": "Write|Edit",
-        "matchPath": "internal/.*\\.go$",
-        "hooks": [
-          {
-            "type": "agent",
-            "prompt": "Review code for architecture compliance. Context: $ARGUMENTS",
-            "description": "Review code for architecture compliance"
-          },
-          {
-            "type": "agent",
-            "prompt": "Check for security vulnerabilities. Context: $ARGUMENTS",
-            "description": "Check for security vulnerabilities"
-          },
-          {
-            "type": "agent",
-            "prompt": "Review error handling patterns. Context: $ARGUMENTS",
-            "description": "Review error handling patterns"
-          },
-          {
-            "type": "agent",
-            "prompt": "Review code quality and Uber Go Style Guide compliance. Context: $ARGUMENTS",
-            "description": "Review code quality and Uber Go Style Guide compliance"
-          }
-        ]
-      },
       {
         "matcher": "Write|Edit",
         "matchPath": "internal/.*/domain/.*\\.go$",
         "hooks": [
-          {
-            "type": "agent",
-            "prompt": "Review this domain layer change for DDD compliance. Context: $ARGUMENTS",
-            "description": "Provide DDD guidance for domain layer changes"
-          },
           {
             "type": "command",
             "command": "${CLAUDE_PLUGIN_ROOT}/scripts/validate-domain-purity.sh",

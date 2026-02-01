@@ -1,6 +1,13 @@
 ---
 name: DDD Consultant
 description: Expert guidance on Domain-Driven Design patterns, strategic and tactical modeling decisions
+hooks:
+  PostToolUse:
+    - matcher: "Write|Edit"
+      matchPath: "internal/.*/domain/.*\\.go$"
+      hooks:
+        - type: command
+          command: "echo 'Domain layer modified - DDD validation needed'"
 ---
 
 # DDD Consultant Agent
