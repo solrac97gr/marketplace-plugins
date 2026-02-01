@@ -7,55 +7,114 @@
     "email": "solrac97gr@users.noreply.github.com"
   },
   "hooks": {
-    "preToolUse": [
+    "PreToolUse": [
       {
-        "description": "Ensure code quality before commits",
         "matcher": "CommitChanges|CreateCommit|git.*commit",
-        "agents": ["test-coverage-guardian", "typescript-quality-reviewer"]
+        "hooks": [
+          {
+            "type": "agent",
+            "agent": "test-coverage-guardian",
+            "description": "Ensure code quality before commits"
+          },
+          {
+            "type": "agent",
+            "agent": "typescript-quality-reviewer",
+            "description": "Ensure code quality before commits"
+          }
+        ]
       }
     ],
-    "postToolUse": [
+    "PostToolUse": [
       {
-        "description": "Review component architecture and React best practices",
         "matcher": "Write|Edit",
-        "filePattern": "src/features/.*/components/.*\\.tsx$",
-        "agents": [
-          "component-architecture-reviewer",
-          "react-best-practices-enforcer",
-          "accessibility-reviewer",
-          "performance-reviewer"
+        "matchPath": "src/features/.*/components/.*\\.tsx$",
+        "hooks": [
+          {
+            "type": "agent",
+            "agent": "component-architecture-reviewer",
+            "description": "Review component architecture and React best practices"
+          },
+          {
+            "type": "agent",
+            "agent": "react-best-practices-enforcer",
+            "description": "Review React best practices"
+          },
+          {
+            "type": "agent",
+            "agent": "accessibility-reviewer",
+            "description": "Review accessibility compliance"
+          },
+          {
+            "type": "agent",
+            "agent": "performance-reviewer",
+            "description": "Review performance optimizations"
+          }
         ]
       },
       {
-        "description": "Validate custom hooks usage",
         "matcher": "Write|Edit",
-        "filePattern": "src/features/.*/hooks/.*\\.ts$",
-        "agents": ["hook-usage-reviewer"],
-        "command": "${CLAUDE_PLUGIN_ROOT}/scripts/validate-component-purity.sh \"${TOOL_FILE_PATH}\""
+        "matchPath": "src/features/.*/hooks/.*\\.ts$",
+        "hooks": [
+          {
+            "type": "agent",
+            "agent": "hook-usage-reviewer",
+            "description": "Validate custom hooks usage"
+          },
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/validate-component-purity.sh \"${TOOL_FILE_PATH}\"",
+            "description": "Validate component purity"
+          }
+        ]
       },
       {
-        "description": "Review test coverage and quality",
         "matcher": "Write|Edit",
-        "filePattern": ".*\\.test\\.(ts|tsx)$",
-        "agents": ["test-coverage-guardian"]
+        "matchPath": ".*\\.test\\.(ts|tsx)$",
+        "hooks": [
+          {
+            "type": "agent",
+            "agent": "test-coverage-guardian",
+            "description": "Review test coverage and quality"
+          }
+        ]
       },
       {
-        "description": "Review state management patterns",
         "matcher": "Write|Edit",
-        "filePattern": "src/features/.*/context/.*\\.tsx$",
-        "agents": ["state-management-reviewer"]
+        "matchPath": "src/features/.*/context/.*\\.tsx$",
+        "hooks": [
+          {
+            "type": "agent",
+            "agent": "state-management-reviewer",
+            "description": "Review state management patterns"
+          }
+        ]
       },
       {
-        "description": "Review TypeScript quality and security",
         "matcher": "Write|Edit",
-        "filePattern": "src/.*\\.(ts|tsx)$",
-        "agents": ["typescript-quality-reviewer", "security-reviewer"]
+        "matchPath": "src/.*\\.(ts|tsx)$",
+        "hooks": [
+          {
+            "type": "agent",
+            "agent": "typescript-quality-reviewer",
+            "description": "Review TypeScript quality"
+          },
+          {
+            "type": "agent",
+            "agent": "security-reviewer",
+            "description": "Review security"
+          }
+        ]
       },
       {
-        "description": "Review Tailwind CSS best practices",
         "matcher": "Write|Edit",
-        "filePattern": "tailwind\\.config\\.js$|.*\\.tsx$",
-        "agents": ["tailwind-best-practices-reviewer"]
+        "matchPath": "tailwind\\.config\\.js$|.*\\.tsx$",
+        "hooks": [
+          {
+            "type": "agent",
+            "agent": "tailwind-best-practices-reviewer",
+            "description": "Review Tailwind CSS best practices"
+          }
+        ]
       }
     ]
   },

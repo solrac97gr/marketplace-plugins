@@ -43,66 +43,104 @@
     "./agents/code-quality-reviewer.md"
   ],
   "hooks": {
-    "preToolUse": [
+    "PreToolUse": [
       {
-        "description": "Update domain documentation before committing changes",
         "matcher": "CommitChanges|CreateCommit|git.*commit",
-        "agents": [
-          "domain-documenter"
+        "hooks": [
+          {
+            "type": "agent",
+            "agent": "domain-documenter",
+            "description": "Update domain documentation before committing changes"
+          }
         ]
       }
     ],
-    "postToolUse": [
+    "PostToolUse": [
       {
-        "description": "Review test coverage and quality",
         "matcher": "Write|Edit",
-        "filePattern": ".*_test\\.go$",
-        "agents": [
-          "test-coverage-guardian"
+        "matchPath": ".*_test\\.go$",
+        "hooks": [
+          {
+            "type": "agent",
+            "agent": "test-coverage-guardian",
+            "description": "Review test coverage and quality"
+          }
         ]
       },
       {
-        "description": "Validate API contracts and consistency",
         "matcher": "Write|Edit",
-        "filePattern": "internal/.*/infrastructure/http/.*\\.go$",
-        "agents": [
-          "api-contract-validator"
+        "matchPath": "internal/.*/infrastructure/http/.*\\.go$",
+        "hooks": [
+          {
+            "type": "agent",
+            "agent": "api-contract-validator",
+            "description": "Validate API contracts and consistency"
+          }
         ]
       },
       {
-        "description": "Review code for architecture compliance, security, error handling, and code quality",
         "matcher": "Write|Edit",
-        "filePattern": "internal/.*\\.go$",
-        "agents": [
-          "architecture-reviewer",
-          "security-reviewer",
-          "error-handling-consultant",
-          "code-quality-reviewer"
+        "matchPath": "internal/.*\\.go$",
+        "hooks": [
+          {
+            "type": "agent",
+            "agent": "architecture-reviewer",
+            "description": "Review code for architecture compliance"
+          },
+          {
+            "type": "agent",
+            "agent": "security-reviewer",
+            "description": "Check for security vulnerabilities"
+          },
+          {
+            "type": "agent",
+            "agent": "error-handling-consultant",
+            "description": "Review error handling patterns"
+          },
+          {
+            "type": "agent",
+            "agent": "code-quality-reviewer",
+            "description": "Review code quality and Uber Go Style Guide compliance"
+          }
         ]
       },
       {
-        "description": "Provide DDD guidance and validate domain layer purity",
         "matcher": "Write|Edit",
-        "filePattern": "internal/.*/domain/.*\\.go$",
-        "agents": [
-          "ddd-consultant"
-        ],
-        "command": "${CLAUDE_PLUGIN_ROOT}/scripts/validate-domain-purity.sh"
-      },
-      {
-        "description": "Review database migration safety",
-        "matcher": "Write|Edit",
-        "filePattern": "migrations/.*\\.sql$",
-        "agents": [
-          "database-migration-assistant"
+        "matchPath": "internal/.*/domain/.*\\.go$",
+        "hooks": [
+          {
+            "type": "agent",
+            "agent": "ddd-consultant",
+            "description": "Provide DDD guidance for domain layer changes"
+          },
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/scripts/validate-domain-purity.sh",
+            "description": "Validate domain layer has no external dependencies"
+          }
         ]
       },
       {
-        "description": "Run architecture tests after updating them",
         "matcher": "Write|Edit",
-        "filePattern": "test/architecture/.*_test\\.go$",
-        "agents": [],
-        "command": "go test ./test/architecture/... -v"
+        "matchPath": "migrations/.*\\.sql$",
+        "hooks": [
+          {
+            "type": "agent",
+            "agent": "database-migration-assistant",
+            "description": "Review database migration safety"
+          }
+        ]
+      },
+      {
+        "matcher": "Write|Edit",
+        "matchPath": "test/architecture/.*_test\\.go$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "go test ./test/architecture/... -v",
+            "description": "Run architecture tests after updating them"
+          }
+        ]
       }
     ]
   },
