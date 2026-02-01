@@ -23,12 +23,11 @@
     ]
   },
   "mcpServers": {
-    "playwright-server": {
-      "command": "node",
+    "playwright": {
+      "command": "npx",
       "args": [
-        "${CLAUDE_PLUGIN_ROOT}/servers/playwright-server/playwright-server.js"
-      ],
-      "description": "Playwright E2E testing integration with tools for test execution, critical flow validation, and cross-browser testing"
+        "@playwright/mcp@latest"
+      ]
     },
     "component-analyzer": {
       "command": "node",
