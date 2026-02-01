@@ -43,70 +43,15 @@
     "./agents/code-quality-reviewer.md"
   ],
   "hooks": {
-    "PreToolUse": [
-      {
-        "matcher": "CommitChanges|CreateCommit|git.*commit",
-        "hooks": [
-          {
-            "type": "agent",
-            "agent": "domain-documenter",
-            "description": "Update domain documentation before committing changes"
-          }
-        ]
-      }
-    ],
+    "PreToolUse": [],
     "PostToolUse": [
-      {
-        "matcher": "Write|Edit",
-        "matchPath": ".*_test\\.go$",
-        "hooks": [
-          {
-            "type": "agent",
-            "agent": "test-coverage-guardian",
-            "description": "Review test coverage and quality"
-          }
-        ]
-      },
-      {
-        "matcher": "Write|Edit",
-        "matchPath": "internal/.*/infrastructure/http/.*\\.go$",
-        "hooks": [
-          {
-            "type": "agent",
-            "agent": "api-contract-validator",
-            "description": "Validate API contracts and consistency"
-          }
-        ]
-      },
-      {
-        "matcher": "Write|Edit",
-        "matchPath": "migrations/.*\\.sql$",
-        "hooks": [
-          {
-            "type": "agent",
-            "agent": "database-migration-assistant",
-            "description": "Review database migration safety"
-          }
-        ]
-      },
-      {
-        "matcher": "Write|Edit",
-        "matchPath": "internal/.*\\.go$",
-        "hooks": [
-          {
-            "type": "agent",
-            "agent": "architecture-reviewer",
-            "description": "Review code for architecture compliance"
-          }
-        ]
-      },
       {
         "matcher": "Write|Edit",
         "matchPath": "internal/.*/domain/.*\\.go$",
         "hooks": [
           {
             "type": "agent",
-            "agent": "ddd-consultant",
+            "prompt": "Review this domain layer change for DDD compliance. Context: $ARGUMENTS",
             "description": "Provide DDD guidance for domain layer changes"
           },
           {
