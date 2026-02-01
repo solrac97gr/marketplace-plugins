@@ -101,6 +101,7 @@
         "description": "Run architecture tests after updating them",
         "matcher": "Write|Edit",
         "filePattern": "test/architecture/.*_test\\.go$",
+        "agents": [],
         "command": "go test ./test/architecture/... -v"
       }
     ]
