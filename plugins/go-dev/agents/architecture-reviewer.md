@@ -4,13 +4,6 @@ description: Proactively reviews code for hexagonal architecture and DDD complia
 skills:
   - review-arch
   - update-arch-tests
-hooks:
-  PostToolUse:
-    - matcher: "Write|Edit"
-      matchPath: "internal/.*\\.go$"
-      hooks:
-        - type: command
-          command: "echo 'Architecture validation triggered'"
 ---
 
 # Architecture Reviewer Agent

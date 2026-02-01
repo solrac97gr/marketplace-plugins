@@ -1,13 +1,6 @@
 ---
 name: Test Coverage Guardian
 description: Ensures TDD/BDD practices, monitors test coverage, validates tests exist before implementation
-hooks:
-  PostToolUse:
-    - matcher: "Write|Edit"
-      matchPath: ".*_test\\.go$"
-      hooks:
-        - type: command
-          command: "echo 'Test file modified - coverage check needed'"
 ---
 
 # Test Coverage Guardian Agent

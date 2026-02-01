@@ -4,13 +4,6 @@ description: Reviews React component structure, composition patterns, single res
 skills:
   - new-component
   - review-code
-hooks:
-  PostToolUse:
-    - matcher: "Write|Edit"
-      matchPath: "src/features/.*/components/.*\\.tsx$"
-      hooks:
-        - type: command
-          command: "echo 'Component modified - architecture review triggered'"
 ---
 
 # Component Architecture Reviewer Agent

@@ -4,13 +4,6 @@ description: Expert guidance on Domain-Driven Design patterns, strategic and tac
 skills:
   - new-entity
   - new-usecase
-hooks:
-  PostToolUse:
-    - matcher: "Write|Edit"
-      matchPath: "internal/.*/domain/.*\\.go$"
-      hooks:
-        - type: command
-          command: "echo 'Domain layer modified - DDD validation needed'"
 ---
 
 # DDD Consultant Agent
