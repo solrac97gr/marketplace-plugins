@@ -86,17 +86,35 @@
             "type": "agent",
             "agent": "architecture-reviewer",
             "description": "Review code for architecture compliance"
-          },
+          }
+        ]
+      },
+      {
+        "matcher": "Write|Edit",
+        "matchPath": "internal/.*\\.go$",
+        "hooks": [
           {
             "type": "agent",
             "agent": "security-reviewer",
             "description": "Check for security vulnerabilities"
-          },
+          }
+        ]
+      },
+      {
+        "matcher": "Write|Edit",
+        "matchPath": "internal/.*\\.go$",
+        "hooks": [
           {
             "type": "agent",
             "agent": "error-handling-consultant",
             "description": "Review error handling patterns"
-          },
+          }
+        ]
+      },
+      {
+        "matcher": "Write|Edit",
+        "matchPath": "internal/.*\\.go$",
+        "hooks": [
           {
             "type": "agent",
             "agent": "code-quality-reviewer",
