@@ -1,0 +1,89 @@
+{
+  "name": "react-dev",
+  "description": "Comprehensive React development plugin with TypeScript, Vite, Tailwind CSS, and modern testing tools. Provides TDD workflows, accessibility compliance, performance optimization, and intelligent code review agents.",
+  "version": "1.0.0",
+  "author": "solrac97gr",
+  "hooks": {
+    "preToolUse": [
+      {
+        "description": "Ensure code quality before commits",
+        "matcher": "CommitChanges|CreateCommit|git.*commit",
+        "agents": [
+          "test-coverage-guardian",
+          "typescript-quality-reviewer"
+        ]
+      }
+    ],
+    "postToolUse": [
+      {
+        "description": "Review component architecture and React best practices",
+        "matcher": "Write|Edit",
+        "filePattern": "src/features/.*/components/.*\\.tsx$",
+        "agents": [
+          "component-architecture-reviewer",
+          "react-best-practices-enforcer",
+          "accessibility-reviewer",
+          "performance-reviewer"
+        ]
+      },
+      {
+        "description": "Validate custom hooks usage",
+        "matcher": "Write|Edit",
+        "filePattern": "src/features/.*/hooks/.*\\.ts$",
+        "agents": [
+          "hook-usage-reviewer"
+        ],
+        "command": "${CLAUDE_PLUGIN_ROOT}/scripts/validate-component-purity.sh \"${TOOL_FILE_PATH}\""
+      },
+      {
+        "description": "Review test coverage and quality",
+        "matcher": "Write|Edit",
+        "filePattern": ".*\\.test\\.(ts|tsx)$",
+        "agents": [
+          "test-coverage-guardian"
+        ]
+      },
+      {
+        "description": "Review state management patterns",
+        "matcher": "Write|Edit",
+        "filePattern": "src/features/.*/context/.*\\.tsx$",
+        "agents": [
+          "state-management-reviewer"
+        ]
+      },
+      {
+        "description": "Review TypeScript quality and security",
+        "matcher": "Write|Edit",
+        "filePattern": "src/.*\\.(ts|tsx)$",
+        "agents": [
+          "typescript-quality-reviewer",
+          "security-reviewer"
+        ]
+      },
+      {
+        "description": "Review Tailwind CSS best practices",
+        "matcher": "Write|Edit",
+        "filePattern": "tailwind\\.config\\.js$|.*\\.tsx$",
+        "agents": [
+          "tailwind-best-practices-reviewer"
+        ]
+      }
+    ]
+  },
+  "mcpServers": {
+    "playwright-server": {
+      "command": "node",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/servers/playwright-server/playwright-server.js"
+      ],
+      "description": "Playwright E2E testing integration with tools for test execution, critical flow validation, and cross-browser testing"
+    },
+    "component-analyzer": {
+      "command": "node",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/servers/component-analyzer/component-analyzer.js"
+      ],
+      "description": "React component analysis tools for component tree analysis, prop drilling detection, and bundle size analysis"
+    }
+  }
+}

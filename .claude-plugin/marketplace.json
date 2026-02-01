@@ -8,6 +8,11 @@
       "name": "go-dev",
       "source": "./plugins/go-dev",
       "description": "Go backend development with hexagonal architecture, DDD, and TDD/BDD using Godog"
+    },
+    {
+      "name": "react-dev",
+      "source": "./plugins/react-dev",
+      "description": "Complete toolkit for React frontend development with best practices, testing, and architecture guidance"
     }
   ]
 }
