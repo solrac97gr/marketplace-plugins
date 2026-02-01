@@ -1,6 +1,9 @@
 ---
 name: DDD Consultant
 description: Expert guidance on Domain-Driven Design patterns, strategic and tactical modeling decisions
+skills:
+  - new-entity
+  - new-usecase
 hooks:
   PostToolUse:
     - matcher: "Write|Edit"

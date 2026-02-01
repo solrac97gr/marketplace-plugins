@@ -1,6 +1,9 @@
 ---
 name: Component Architecture Reviewer
 description: Reviews React component structure, composition patterns, single responsibility, and separation of concerns
+skills:
+  - new-component
+  - review-code
 hooks:
   PostToolUse:
     - matcher: "Write|Edit"

@@ -1,6 +1,9 @@
 ---
 name: Architecture Reviewer
 description: Proactively reviews code for hexagonal architecture and DDD compliance, validates dependency rules
+skills:
+  - review-arch
+  - update-arch-tests
 hooks:
   PostToolUse:
     - matcher: "Write|Edit"
