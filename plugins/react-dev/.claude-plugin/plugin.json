@@ -11,12 +11,12 @@
     "PostToolUse": [
       {
         "matcher": "Write|Edit",
-        "matchPath": "src/features/.*/hooks/.*\\.ts$",
+        "matchPath": "src/.*/.*\\.(tsx|ts|jsx|js)$",
         "hooks": [
           {
             "type": "command",
             "command": "${CLAUDE_PLUGIN_ROOT}/scripts/validate-component-purity.sh \"${TOOL_FILE_PATH}\"",
-            "description": "Validate component purity"
+            "description": "Validate React component and hook best practices"
           }
         ]
       }
@@ -30,11 +30,8 @@
       ]
     },
     "component-analyzer": {
-      "command": "node",
-      "args": [
-        "${CLAUDE_PLUGIN_ROOT}/servers/component-analyzer/component-analyzer.js"
-      ],
-      "description": "React component analysis tools for component tree analysis, prop drilling detection, and bundle size analysis"
+      "command": "${CLAUDE_PLUGIN_ROOT}/servers/component-analyzer/component-analyzer",
+      "description": "React component analysis tools for component tree analysis, prop drilling detection, complexity analysis, and accessibility checks"
     }
   }
 }
