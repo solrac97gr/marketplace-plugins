@@ -6,42 +6,6 @@
     "name": "solrac97gr",
     "email": "solrac97gr@users.noreply.github.com"
   },
-  "homepage": "https://github.com/solrac97gr/marketplace-plugins",
-  "repository": "https://github.com/solrac97gr/marketplace-plugins",
-  "license": "MIT",
-  "keywords": [
-    "golang",
-    "hexagonal-architecture",
-    "clean-architecture",
-    "ddd",
-    "domain-driven-design",
-    "tdd",
-    "bdd",
-    "godog",
-    "microservices",
-    "architecture-testing",
-    "goarchtest"
-  ],
-  "skills": [
-    "./skills/start-project",
-    "./skills/new-feature",
-    "./skills/new-entity",
-    "./skills/new-usecase",
-    "./skills/from-diagram",
-    "./skills/review-arch",
-    "./skills/update-arch-tests"
-  ],
-  "agents": [
-    "./agents/architecture-reviewer.md",
-    "./agents/ddd-consultant.md",
-    "./agents/domain-documenter.md",
-    "./agents/test-coverage-guardian.md",
-    "./agents/api-contract-validator.md",
-    "./agents/security-reviewer.md",
-    "./agents/error-handling-consultant.md",
-    "./agents/database-migration-assistant.md",
-    "./agents/code-quality-reviewer.md"
-  ],
   "hooks": {
     "PreToolUse": [],
     "PostToolUse": [
