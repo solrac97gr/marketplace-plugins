@@ -13,6 +13,11 @@
       "name": "react-dev",
       "source": "./plugins/react-dev",
       "description": "Complete toolkit for React frontend development with best practices, testing, and architecture guidance"
+    },
+    {
+      "name": "plugin-helper",
+      "source": "./plugins/plugin-helper",
+      "description": "Meta-plugin for analyzing projects and generating custom Claude Code plugins tailored to your codebase"
     }
   ]
 }

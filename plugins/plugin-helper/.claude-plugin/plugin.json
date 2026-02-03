@@ -1,0 +1,14 @@
+{
+  "name": "plugin-helper",
+  "description": "Meta-plugin for analyzing projects and generating custom Claude Code plugins tailored to your codebase patterns and workflows",
+  "version": "1.0.0",
+  "author": {
+    "name": "solrac97gr",
+    "email": "solrac97gr@users.noreply.github.com"
+  },
+  "hooks": {
+    "PreToolUse": [],
+    "PostToolUse": []
+  },
+  "mcpServers": {}
+}
